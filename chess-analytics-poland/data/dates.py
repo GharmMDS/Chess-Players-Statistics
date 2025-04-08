@@ -1,45 +1,18 @@
-import requests
-import pandas as pd
-from sqlalchemy import create_engine, text
-import datetime
-import logging
+import json
+import os
 import re
 import sys
-import os
-import sys
+import datetime
+import logging
+import pandas as pd
+from sqlalchemy import create_engine, text
+
 # Log setup
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Database connection
 DB_URL = "postgresql://postgres:gharm@localhost:5432/chess_data"
 engine = create_engine(DB_URL)
-
-# Requests session setup
-session = requests.Session()
-session.headers.update({'User-Agent': 'QueenIsBeautiful (your_email@example.com)'})
-
-# Function to fetch all game archive URLs for a player
-def fetch_all_game_urls(player):
-    url = f"https://api.chess.com/pub/player/{player}/games/archives"
-    try:
-        response = session.get(url)
-        response.raise_for_status()
-        archives = response.json().get("archives", [])
-        logging.info(f"Found {len(archives)} archives for {player}")
-        return archives
-    except Exception as e:
-        logging.error(f"Error fetching archives: {e}")
-        return []
-
-# Function to fetch games data from an archive URL
-def fetch_games_data(archive_url):
-    try:
-        response = session.get(archive_url)
-        response.raise_for_status()
-        return response.json().get("games", [])
-    except Exception as e:
-        logging.error(f"Error fetching games from {archive_url}: {e}")
-        return []
 
 # Function to extract the date from a PGN string
 def extract_date_from_pgn(pgn):
@@ -52,41 +25,49 @@ def extract_date_from_pgn(pgn):
     logging.warning("No valid Date tag found in PGN. Using default date.")
     return '1900-01-01'
 
-# Function to save extracted dates to a CSV file
-def save_extracted_dates(player):
-    archives = fetch_all_game_urls(player)
-    if not archives:
-        return None
+# Function to process JSON files and extract dates
+def process_json_files_for_dates(player):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(os.path.dirname(script_dir))
+    player_json_dir = os.path.join(project_root, player)
+    extracted_dates = []
 
-    extracted = []
-    for archive_url in archives:
-        games = fetch_games_data(archive_url)
-        for game in games:
-            if "pgn" not in game:
-                continue
-            game_id = game.get("uuid", game["url"].split("/")[-1])
-            date_time = extract_date_from_pgn(game["pgn"])
-            extracted.append({"game_id": game_id, "date_time": date_time})
+    if not os.path.exists(player_json_dir):
+        logging.error(f"JSON data directory not found: {player_json_dir}")
+        return pd.DataFrame()
 
-    if extracted:
-        df = pd.DataFrame(extracted)
-        filename = f"{player}_extracted_dates.csv"
-        df.to_csv(filename, index=False)
-        logging.info(f"Saved {len(df)} records to {filename}")
-        return filename
+    for filename in os.listdir(player_json_dir):
+        if filename.endswith(".json") and filename.startswith(f"{player}_games_"):
+            filepath = os.path.join(player_json_dir, filename)
+            try:
+                with open(filepath, 'r') as f:
+                    games = json.load(f)
+                    for game in games:
+                        if "pgn" not in game:
+                            continue
+                        game_id = game.get("uuid", game.get("url", "").split('/')[-1])
+                        date_time = extract_date_from_pgn(game["pgn"])
+                        extracted_dates.append({"game_id": game_id, "date_time": date_time})
+            except IOError as e:
+                logging.error(f"Error reading JSON file {filepath}: {e}")
+            except json.JSONDecodeError as e:
+                logging.error(f"Error decoding JSON in {filepath}: {e}")
+
+    if extracted_dates:
+        df = pd.DataFrame(extracted_dates)
+        return df
     else:
-        logging.warning("No valid dates extracted.")
-        return None
+        logging.warning("No valid dates extracted from JSON files.")
+        return pd.DataFrame()
 
-# Function to update the database with extracted dates from the CSV file
-def update_games_table_with_dates(csv_path):
+# Function to update the database with extracted dates
+def update_games_table_with_dates(df_dates):
     try:
-        df_dates = pd.read_csv(csv_path)
-        logging.info(f"Loaded {len(df_dates)} extracted dates from '{csv_path}'.")
+        logging.info(f"Processing {len(df_dates)} extracted dates.")
 
-        # Check if date_time column exists in games table
         with engine.connect() as connection:
-            result = connection.execute(text(""" 
+            # Check if date_time column exists
+            result = connection.execute(text("""
                 SELECT EXISTS (
                     SELECT 1
                     FROM information_schema.columns
@@ -96,7 +77,6 @@ def update_games_table_with_dates(csv_path):
             """)).scalar()
 
             if not result:
-                # Add date_time column to games table if it doesn't exist
                 connection.execute(text("""
                     ALTER TABLE games
                     ADD COLUMN date_time DATE;
@@ -106,7 +86,7 @@ def update_games_table_with_dates(csv_path):
             else:
                 logging.info("date_time column already exists in games table.")
 
-            # Update games table with date_time from CSV
+            # Update games table with date_time from DataFrame
             for _, row in df_dates.iterrows():
                 game_id = row['game_id']
                 date_time = row['date_time']
@@ -117,7 +97,7 @@ def update_games_table_with_dates(csv_path):
                 """), {"date_time": date_time, "game_id": game_id})
             connection.commit()
 
-        logging.info(f"Successfully updated games table with date_time data.")
+        logging.info("Successfully updated games table with date_time data.")
 
     except Exception as e:
         logging.error(f"Error updating database: {e}")
@@ -125,18 +105,18 @@ def update_games_table_with_dates(csv_path):
 def main():
     # Get Chess.com username from command-line argument
     if len(sys.argv) > 1:
-        player = sys.argv[1]
+        player = sys.argv[1].strip().lower()
     else:
         player = input("Enter the Chess.com username: ").strip().lower()
 
-    # Step 1: Extract dates and save them to a CSV
-    csv_file = save_extracted_dates(player)
-    if csv_file:
-        # Step 2: Update the database with the extracted dates
-        update_games_table_with_dates(csv_file)
-    else:
-        logging.error(f"Failed to extract dates for {player}.")
+    # Step 1: Process JSON files and extract dates into a DataFrame
+    dates_df = process_json_files_for_dates(player)
 
+    # Step 2: Update the database with the extracted dates
+    if not dates_df.empty:
+        update_games_table_with_dates(dates_df)
+    else:
+        logging.error(f"No valid dates found for {player} to update the database.")
 
 if __name__ == "__main__":
     main()

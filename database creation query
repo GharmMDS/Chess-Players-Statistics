@@ -1,0 +1,29 @@
+CREATE TABLE players (
+    player_id TEXT PRIMARY KEY,
+    username TEXT UNIQUE NOT NULL,
+    name TEXT,
+    title TEXT,
+    country TEXT,
+    location TEXT,
+    last_online TIMESTAMP WITH TIME ZONE,
+    joined TIMESTAMP WITH TIME ZONE,
+    status TEXT,
+    rating INTEGER
+);
+
+CREATE TABLE games (
+    game_id TEXT PRIMARY KEY,
+    white_rating INTEGER,
+    black_rating INTEGER,
+    time_class TEXT,
+    time_control TEXT,
+    rules TEXT,
+    eco TEXT,
+    pgn TEXT,
+    start_time TIMESTAMP WITH TIME ZONE,
+    end_time TIMESTAMP WITH TIME ZONE,
+    winner TEXT,
+    white_player_id TEXT REFERENCES players(player_id),
+    black_player_id TEXT REFERENCES players(player_id),
+    date_time DATE
+);

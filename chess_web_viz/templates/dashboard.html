@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chess Analytics Dashboard for {{ username }}</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Chess Analytics Dashboard for {{ username }}</h1>
+
+    <div>
+        <h2>Rating Over Time</h2>
+        {{ plot_rating_time_div|safe }}
+    </div>
+
+    <div>
+        <h2>Rating Distribution (White vs. Black)</h2>
+        {{ plot_rating_dist_div|safe }}
+    </div>
+
+    <div>
+        <h2>Win Rate (White vs. Black)</h2>
+        {{ plot_win_rate_div|safe }}
+    </div>
+
+    <div>
+        <h2>Rating Distribution by Time Control</h2>
+        {{ plot_rating_tc_div|safe }}
+    </div>
+
+    <div>
+        <h2>Top ECO Performance (>= 25 Games)</h2>
+        {{ plot_eco_div|safe }}
+    </div>
+
+    <p><a href="/">Back to Dashboard (Default User)</a></p>
+</body>
+</html>
