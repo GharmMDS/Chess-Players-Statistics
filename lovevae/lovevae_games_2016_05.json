@@ -1,0 +1,58 @@
+[
+    {
+        "url": "https://www.chess.com/game/live/1573518665",
+        "pgn": "[Event \"Live Chess\"]\n[Site \"Chess.com\"]\n[Date \"2016.05.11\"]\n[Round \"-\"]\n[White \"retiredgenius\"]\n[Black \"LOVEVAE\"]\n[Result \"1-0\"]\n[CurrentPosition \"r2q1rk1/4bppp/Bpn1pn2/3p4/8/2P1PN2/PP1NQPPP/R1B2RK1 b - -\"]\n[Timezone \"UTC\"]\n[ECO \"D05\"]\n[ECOUrl \"https://www.chess.com/openings/Colle-System-Traditional-Line...6.Nbd2-Be7-7.O-O-O-O\"]\n[UTCDate \"2016.05.11\"]\n[UTCTime \"03:47:59\"]\n[WhiteElo \"2416\"]\n[BlackElo \"2497\"]\n[TimeControl \"60\"]\n[Termination \"retiredgenius won by resignation\"]\n[StartTime \"03:47:59\"]\n[EndDate \"2016.05.11\"]\n[EndTime \"03:48:39\"]\n[Link \"https://www.chess.com/game/live/1573518665\"]\n\n1. Nf3 {[%clk 0:01:00]} 1... e6 {[%clk 0:01:00]} 2. d4 {[%clk 0:00:59.9]} 2... Nf6 {[%clk 0:00:52.4]} 3. e3 {[%clk 0:00:58.4]} 3... Be7 {[%clk 0:00:52.3]} 4. Bd3 {[%clk 0:00:58.2]} 4... O-O {[%clk 0:00:52]} 5. O-O {[%clk 0:00:58.1]} 5... d5 {[%clk 0:00:37.6]} 6. c3 {[%clk 0:00:58]} 6... c5 {[%clk 0:00:35.1]} 7. Nbd2 {[%clk 0:00:57.9]} 7... Nc6 {[%clk 0:00:35]} 8. dxc5 {[%clk 0:00:56.5]} 8... b6 {[%clk 0:00:34.6]} 9. cxb6 {[%clk 0:00:55.2]} 9... axb6 {[%clk 0:00:34.5]} 10. Qe2 {[%clk 0:00:55.1]} 10... Ba6 {[%clk 0:00:34.1]} 11. Bxa6 {[%clk 0:00:53.8]} 1-0\n",
+        "time_control": "60",
+        "end_time": 1462938519,
+        "rated": true,
+        "tcn": "gv0SlB!Tmu90ft8!egZJksYIbl5QBIXPIPWPdm6OtO",
+        "uuid": "2d57625a-8697-11e0-8000-000000010001",
+        "initial_setup": "",
+        "fen": "r2q1rk1/4bppp/Bpn1pn2/3p4/8/2P1PN2/PP1NQPPP/R1B2RK1 b - -",
+        "time_class": "bullet",
+        "rules": "chess",
+        "white": {
+            "rating": 2416,
+            "result": "win",
+            "@id": "https://api.chess.com/pub/player/retiredgenius",
+            "username": "retiredgenius",
+            "uuid": "eff5f9e8-1b1d-11e4-8036-000000000000"
+        },
+        "black": {
+            "rating": 2497,
+            "result": "resigned",
+            "@id": "https://api.chess.com/pub/player/lovevae",
+            "username": "LOVEVAE",
+            "uuid": "9e725456-ed1f-11e5-8062-000000000000"
+        },
+        "eco": "https://www.chess.com/openings/Colle-System-Traditional-Line...6.Nbd2-Be7-7.O-O-O-O"
+    },
+    {
+        "url": "https://www.chess.com/game/live/1573519345",
+        "pgn": "[Event \"Live Chess\"]\n[Site \"Chess.com\"]\n[Date \"2016.05.11\"]\n[Round \"-\"]\n[White \"LOVEVAE\"]\n[Black \"retiredgenius\"]\n[Result \"0-1\"]\n[CurrentPosition \"r5k1/1p3ppp/p2B1n2/8/3Pp1b1/P5P1/5q1P/R2Q1B1K w - -\"]\n[Timezone \"UTC\"]\n[ECO \"E20\"]\n[ECOUrl \"https://www.chess.com/openings/Nimzo-Indian-Defense-Romanishin-Kasparov-System-4...c5-5.Nf3-cxd4-6.Nxd4\"]\n[UTCDate \"2016.05.11\"]\n[UTCTime \"03:48:56\"]\n[WhiteElo \"2484\"]\n[BlackElo \"2426\"]\n[TimeControl \"60\"]\n[Termination \"retiredgenius won by resignation\"]\n[StartTime \"03:48:56\"]\n[EndDate \"2016.05.11\"]\n[EndTime \"03:50:37\"]\n[Link \"https://www.chess.com/game/live/1573519345\"]\n\n1. d4 {[%clk 0:01:00]} 1... c5 {[%clk 0:01:00]} 2. c4 {[%clk 0:00:59.8]} 2... cxd4 {[%clk 0:00:59.1]} 3. Nf3 {[%clk 0:00:59.7]} 3... Nf6 {[%clk 0:00:58.5]} 4. Nxd4 {[%clk 0:00:59]} 4... e6 {[%clk 0:00:58.4]} 5. Nc3 {[%clk 0:00:58.4]} 5... Bb4 {[%clk 0:00:57.8]} 6. g3 {[%clk 0:00:57.7]} 6... Qc7 {[%clk 0:00:56.3]} 7. Bg2 {[%clk 0:00:57]} 7... a6 {[%clk 0:00:55.6]} 8. O-O {[%clk 0:00:56.9]} 8... O-O {[%clk 0:00:54]} 9. a3 {[%clk 0:00:54.3]} 9... Bxc3 {[%clk 0:00:52.6]} 10. bxc3 {[%clk 0:00:54.2]} 10... Qxc4 {[%clk 0:00:52.2]} 11. Bf4 {[%clk 0:00:53.8]} 11... d5 {[%clk 0:00:51.2]} 12. Rc1 {[%clk 0:00:52.7]} 12... Nc6 {[%clk 0:00:49.8]} 13. Bd6 {[%clk 0:00:52.3]} 13... Rd8 {[%clk 0:00:46.6]} 14. Bc7 {[%clk 0:00:50.6]} 14... Rd7 {[%clk 0:00:42.5]} 15. Bb6 {[%clk 0:00:49.9]} 15... Ne5 {[%clk 0:00:40.6]} 16. e3 {[%clk 0:00:35.7]} 16... Ne4 {[%clk 0:00:38.7]} 17. Re1 {[%clk 0:00:34.7]} 17... Re7 {[%clk 0:00:36.7]} 18. Bf1 {[%clk 0:00:34.1]} 18... Qa2 {[%clk 0:00:33.9]} 19. Ra1 {[%clk 0:00:33.1]} 19... Qxf2+ {[%clk 0:00:32.6]} 20. Kh1 {[%clk 0:00:31.8]} 20... Qb2 {[%clk 0:00:29.7]} 21. Re2 {[%clk 0:00:30.3]} 21... Nf2+ {[%clk 0:00:28.5]} 22. Rxf2 {[%clk 0:00:28.2]} 22... Qxf2 {[%clk 0:00:28.4]} 23. e4 {[%clk 0:00:27.5]} 23... Nd7 {[%clk 0:00:24.3]} 24. Bc7 {[%clk 0:00:24.6]} 24... e5 {[%clk 0:00:23.1]} 25. Bd6 {[%clk 0:00:23.7]} 25... exd4 {[%clk 0:00:20.1]} 26. Bxe7 {[%clk 0:00:22.6]} 26... dxe4 {[%clk 0:00:20]} 27. cxd4 {[%clk 0:00:21.4]} 27... Nf6 {[%clk 0:00:18.2]} 28. Bd6 {[%clk 0:00:19.8]} 28... Bg4 {[%clk 0:00:16.3]} 0-1\n",
+        "time_control": "60",
+        "end_time": 1462938637,
+        "rated": true,
+        "tcn": "lBYIkAIBgv!TvB0Sbs9zow7YfoWOeg8!iqzsjsYAcDZJac5QDR97RY7ZYPQKmuTCfeZ0ofAicainghnjemCnmnjnuCKZPYSKYRKBR0JCsBZT0R6E",
+        "uuid": "46f8a98a-8697-11e0-8000-000000010001",
+        "initial_setup": "",
+        "fen": "r5k1/1p3ppp/p2B1n2/8/3Pp1b1/P5P1/5q1P/R2Q1B1K w - -",
+        "time_class": "bullet",
+        "rules": "chess",
+        "white": {
+            "rating": 2484,
+            "result": "resigned",
+            "@id": "https://api.chess.com/pub/player/lovevae",
+            "username": "LOVEVAE",
+            "uuid": "9e725456-ed1f-11e5-8062-000000000000"
+        },
+        "black": {
+            "rating": 2426,
+            "result": "win",
+            "@id": "https://api.chess.com/pub/player/retiredgenius",
+            "username": "retiredgenius",
+            "uuid": "eff5f9e8-1b1d-11e4-8036-000000000000"
+        },
+        "eco": "https://www.chess.com/openings/Nimzo-Indian-Defense-Romanishin-Kasparov-System-4...c5-5.Nf3-cxd4-6.Nxd4"
+    }
+]

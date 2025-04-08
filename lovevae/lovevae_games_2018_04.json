@@ -1,0 +1,30 @@
+[
+    {
+        "url": "https://www.chess.com/game/live/2715574630",
+        "pgn": "[Event \"Live Chess\"]\n[Site \"Chess.com\"]\n[Date \"2018.04.01\"]\n[Round \"-\"]\n[White \"LOVEVAE\"]\n[Black \"XuYinglun\"]\n[Result \"1/2-1/2\"]\n[CurrentPosition \"rnbq1rk1/1p3ppp/p3pn2/2bP4/5B2/2N1PN1P/PP3PP1/R2QKB1R b KQ -\"]\n[Timezone \"UTC\"]\n[ECO \"D37\"]\n[ECOUrl \"https://www.chess.com/openings/Queens-Gambit-Declined-Three-Knights-Harrwitz-Attack-5...O-O-6.e3-a6\"]\n[UTCDate \"2018.04.01\"]\n[UTCTime \"08:10:10\"]\n[WhiteElo \"2840\"]\n[BlackElo \"2494\"]\n[TimeControl \"60\"]\n[Termination \"Game drawn by agreement\"]\n[StartTime \"08:10:10\"]\n[EndDate \"2018.04.01\"]\n[EndTime \"08:11:04\"]\n[Link \"https://www.chess.com/game/live/2715574630\"]\n\n1. c4 {[%clk 0:00:59.9]} 1... e6 {[%clk 0:00:59.1]} 2. d4 {[%clk 0:00:56.7]} 2... d5 {[%clk 0:00:59]} 3. Nf3 {[%clk 0:00:55.9]} 3... Nf6 {[%clk 0:00:56.1]} 4. Nc3 {[%clk 0:00:54.6]} 4... Be7 {[%clk 0:00:55.2]} 5. Bf4 {[%clk 0:00:53.3]} 5... O-O {[%clk 0:00:53.9]} 6. e3 {[%clk 0:00:45.9]} 6... a6 {[%clk 0:00:41]} 7. h3 {[%clk 0:00:44.7]} 7... c5 {[%clk 0:00:34.6]} 8. dxc5 {[%clk 0:00:42.7]} 8... Bxc5 {[%clk 0:00:32.3]} 9. cxd5 {[%clk 0:00:41]} 1/2-1/2\n",
+        "time_control": "60",
+        "end_time": 1522570264,
+        "rated": false,
+        "tcn": "kA0SlBZJgv!Tbs90cD8!muWOpxYIBI0IAJ",
+        "uuid": "31852f3c-0fc6-11e3-8000-000000010001",
+        "initial_setup": "",
+        "fen": "rnbq1rk1/1p3ppp/p3pn2/2bP4/5B2/2N1PN1P/PP3PP1/R2QKB1R b KQ -",
+        "time_class": "bullet",
+        "rules": "chess",
+        "white": {
+            "rating": 2840,
+            "result": "agreed",
+            "@id": "https://api.chess.com/pub/player/lovevae",
+            "username": "LOVEVAE",
+            "uuid": "9e725456-ed1f-11e5-8062-000000000000"
+        },
+        "black": {
+            "rating": 2494,
+            "result": "agreed",
+            "@id": "https://api.chess.com/pub/player/xuyinglun",
+            "username": "XuYinglun",
+            "uuid": "0e44b318-151d-11e5-8002-000000000000"
+        },
+        "eco": "https://www.chess.com/openings/Queens-Gambit-Declined-Three-Knights-Harrwitz-Attack-5...O-O-6.e3-a6"
+    }
+]
