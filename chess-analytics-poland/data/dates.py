@@ -9,10 +9,16 @@ from sqlalchemy import create_engine, text
 
 # Log setup
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-# Database connection
-DB_URL = "postgresql://postgres:gharm@localhost:5432/chess_data"
-engine = create_engine(DB_URL)
+from db_connection import get_engine
+
+engine = get_engine()
+print("✅ Database connection imported and created successfully.")
+
+
 
 # Function to extract the date from a PGN string
 def extract_date_from_pgn(pgn):

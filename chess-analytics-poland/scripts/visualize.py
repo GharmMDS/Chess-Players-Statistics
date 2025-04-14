@@ -7,10 +7,15 @@ import sys
 import re
 import requests
 import chess.pgn
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-# Database connection
-DB_URL = "postgresql://postgres:gharm@localhost:5432/chess_data"
-engine = create_engine(DB_URL)
+from db_connection import get_engine
+
+engine = get_engine()
+print("✅ Database connection imported and created successfully.")
+
 
 # Get player name from command-line or terminal input
 if len(sys.argv) > 1:

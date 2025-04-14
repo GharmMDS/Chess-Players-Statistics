@@ -2,6 +2,10 @@ import sys
 import os
 import subprocess
 
+# Ensures all imports in chess-analytics-poland/ work no matter where main.py is run from
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+
+
 def main():
     username = input("Enter the Chess.com username to process: ").strip().lower()
     data_folder = username

@@ -13,9 +13,15 @@ from sqlalchemy.exc import IntegrityError
 # Set up logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-# Database connection
-DB_URL = "postgresql://postgres:gharm@localhost:5432/chess_data"
-engine = create_engine(DB_URL)
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from db_connection import get_engine
+
+engine = get_engine()
+print("✅ Database connection imported and created successfully.")
+
 
 # Chess.com API settings
 HEADERS = {'User-Agent': 'QueenIsBeautiful (your_email@example.com)'}
